@@ -1,0 +1,20 @@
+{
+  "success": {
+    "create": "تم اضافة {entity} بنجاح",
+    "update": "تم تعديل {entity} بنجاح",
+    "delete": "تم حذف {entity} بنجاح",
+    "reject": "تم رفض {entity} بنجاح",
+    "approve": "تم قبول {entity} بنجاح",
+    "findOne": "تم استرجاع {entity} واحد بنجاح",
+    "findAll": "تم استرجاع مجموعة من ال{entity}"
+  },
+  "errors": {
+    "create": "حدث خطأ عند صنع {entity}",
+    "update": "حدث خطأ عند تحديث {entity}",
+    "delete": "حدث خطأ عند حذف {entity}",
+    "readAll": "حدث خطأ عند استرجاع مجموعة {entity}",
+    "readOne": "حدث خطأ عند استرجاع {entity}",
+    "reject": "حدث خطأ في رفض {entity}",
+    "approve": "حدث خطأ في قبول {entity}"
+  }
+}

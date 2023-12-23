@@ -1,0 +1,8 @@
+{
+  "user": "User",
+  "admin": "Admin",
+  "room": "Room",
+  "message": "Message",
+  "email": "Email",
+  "notification": "Notification"
+}

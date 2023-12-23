@@ -1,0 +1,30 @@
+{
+  "isNotEmpty": "{property} must be provided",
+  "min": "{property} must be more than {min}, and you provided {value}",
+  "isString": "{property} must be a string, and you provided {value}",
+  "isInt": "{property} must be an integer number, and you provided {value}",
+  "max": "{property} must be less than {max}, and you provided {value}",
+  "email": "You must enter a valid email, and you provided {value}",
+  "minLength": "{property} must be more than {min} characters, and you provided {value}",
+  "maxLength": "{property} must be less than {max} characters, and you provided {value}",
+  "phoneNumber": "You must enter a valid Phone Number, and you provided {value}",
+  "uniqueProperty": "An {entity} already has {property} {value}, please choose another one",
+  "passwordContains": {
+    "uppercase": "Password must contain an uppercase letter",
+    "lowercase": "Password must contain a lowercase letter",
+    "number": "Password must contain a number",
+    "specialCharacter": "Password must contain an special character letter"
+  },
+  "confirmPasswordContains": {
+    "uppercase": "Confirm Password must contain an uppercase letter",
+    "lowercase": "Confirm Password must contain a lowercase letter",
+    "number": "Confirm Password must contain a number",
+    "specialCharacter": "Confirm Password must contain an special character letter"
+  },
+  "date": "Date Format Must be dd/mm/yy, and you provided {value}",
+  "confirmPasswordMatch": "Confirmed password must match password",
+  "invalidMongoDBID": "The {property} is not a MongoDB ID, and you provided {value}",
+  "throttlerError": "You have made too many requests, please wait.",
+  "fileType": "Only {fileTypes} file types are allowed, and {fileName} has {invalidType} as the type",
+  "fileSize": "File size must be less than {size} and the file {fileName} is {fileSize}"
+}

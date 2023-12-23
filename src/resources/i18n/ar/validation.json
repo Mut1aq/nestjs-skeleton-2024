@@ -1,0 +1,30 @@
+{
+  "isNotEmpty": "{property} يجب التزويد ب",
+  "min": "{property} يجب ان تكون اكبر من {min}",
+  "isString": "{property} يجب ان يكون متكون من احرف حقيقية",
+  "isInt": "{property} يجب ان يكون عدد صحيح",
+  "max": "{property} يجب ان يكون اقل من {max}",
+  "email": "يجب التزويد بايميل صحيح",
+  "minLength": "{property} يجب ان يكون اكثر من {min} حرف",
+  "phoneNumber": "يجب ادخال رقم هاتف صحيح",
+  "maxLength": "{property} يجب ان يكون اقل من {max} حرف",
+  "uniqueProperty": "يوجد {entity} مستخدم {property}: {value}, الرجاء استخدام {property} مختلف",
+  "passwordContains": {
+    "uppercase": "يجب ان تحتوي كلمة السر على حرف كبير",
+    "lowercase": "يجب ان تحتوي كلمة السر على حرف صغير",
+    "number": "يجب ان تحتوي كلمة السر على رقم",
+    "specialCharacter": "يجب ان تحتوي كلمة السر على رمز"
+  },
+  "confirmPasswordContains": {
+    "uppercase": "يجب ان تحتوي تاكيد كلمة السر على حرف كبير",
+    "lowercase": "يجب ان تحتوي تاكيد كلمة السر على حرف صغير",
+    "number": "يجب ان تحتوي تاكيد كلمة السر على رقم",
+    "specialCharacter": "يجب ان تحتوي تاكيد كلمة السر على رمز"
+  },
+  "date": "يجب ادخال شكل التاريخ بالشكل ي ي/ م م / س س س س ",
+  "confirmPasswordMatch": "يجب ان يكون تاكيد كلمة السر مشابهة لكلمة السر",
+  "invalidMongoDBID": "{property} ليس صحيح",
+  "throttlerError": "لقد حاولت ارسال عدد كثير من الطلبات, الرجاء الانتظار دقيقة على الاقل",
+  "fileType": "فقط الملفات بنوع {fileTypes} يمكن استخدامها و الملف {fileName} من نوع {invalidType}",
+  "fileSize": "يجب ان يكون حجم الملف اقل من {size} و الملف {fileName} حجمه {fileSize}"
+}

@@ -1,0 +1,20 @@
+{
+  "success": {
+    "create": "Successfully added a new {entity}",
+    "update": "Successfully updated the {entity}",
+    "delete": "Successfully deleted the {entity}",
+    "approve": "Successfully approved the {entity}",
+    "reject": "Successfully rejected the {entity}",
+    "findOne": "Successfully fetched one {entity}",
+    "findAll": "Successfully fetched {entity}s"
+  },
+  "errors": {
+    "create": "Something went wrong with creating a {entity}",
+    "update": "Something went wrong with updating a {entity}",
+    "delete": "Something went wrong with deleting a {entity}",
+    "readAll": "Something went wrong with reading a {entity}s",
+    "readOne": "Something went wrong with reading a {entity}",
+    "reject": "Something went wrong with rejecting a {entity}",
+    "approve": "Something went wrong with approving a {entity}"
+  }
+}
