@@ -1,9 +1,24 @@
 import { FindOptionsSelect } from 'typeorm';
 import { User } from '../entities/user.entity';
 
-export const selectUser: string[] | FindOptionsSelect<User> = [
+export const selectUsers: string[] | FindOptionsSelect<User> = [
   'id',
-  'email',
   'username',
-  'city',
+  'gender',
+  'profileStatus',
 ];
+
+export const relationSelectUser: FindOptionsSelect<User> = {
+  id: true,
+  username: true,
+  gender: true,
+  profileStatus: true,
+};
+
+export const selectUser: FindOptionsSelect<User> = {
+  id: true,
+  username: true,
+  gender: true,
+  profileStatus: true,
+   
+};

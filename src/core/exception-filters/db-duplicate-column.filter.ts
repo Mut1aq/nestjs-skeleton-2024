@@ -10,6 +10,9 @@ import { Response } from 'express';
 import { filter } from 'nestjs-conditional-exception-filter';
 import { I18nContext } from 'nestjs-i18n';
 import { I18nTranslations } from 'resources/generated/i18n.generated';
+import { ExceptionI } from 'shared/interfaces/http/exception.interface';
+import { ExceptionsLoggerService } from 'core/lib/logger/exceptions-logger.service';
+import { requestMapper } from 'shared/util/request-mapper.util';
 
 @Catch(
   filter({
@@ -18,7 +21,9 @@ import { I18nTranslations } from 'resources/generated/i18n.generated';
   }),
 )
 export class DbDuplicateColumnFilter implements ExceptionFilter {
-  constructor() {}
+  constructor(
+    private readonly exceptionsLoggerService: ExceptionsLoggerService,
+  ) {}
   catch(exception: TypeORMError & QueryFailedError, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse<Response>();
@@ -42,7 +47,18 @@ export class DbDuplicateColumnFilter implements ExceptionFilter {
           property: column,
           value,
         },
-      });
+      })!;
+
+      const loggedRequest = requestMapper(request);
+
+      const loggedException: ExceptionI = {
+        statusCode: HttpStatus.CONFLICT,
+        message,
+        time: new Date().toUTCString(),
+        request: loggedRequest,
+      };
+
+      this.exceptionsLoggerService.logException(loggedException);
 
       response.status(HttpStatus.CONFLICT).json({
         statusCode: HttpStatus.CONFLICT,

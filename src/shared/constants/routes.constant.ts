@@ -12,5 +12,18 @@ export const ROUTES = {
     FIND_ONE: ':userID',
     UPDATE_ONE: 'update',
     DELETE_ONE: 'delete',
+    FOLLOW_UNFOLLOW: 'follow-unfollow/:userIDToPerformActionOn',
+    FOLLOWERS: 'followers/:userIDToView',
+    FOLLOWINGS: 'followings/:userIDToView',
+  },
+
+  POSTS: {
+    CONTROLLER: 'posts',
+    CREATE: '',
+    FIND_ALL: '',
+    FIND_ONE: ':postID',
+    UPDATE_ONE: ':postID',
+    DELETE_ONE: ':postID',
+    FEED: 'feed',
   },
 };

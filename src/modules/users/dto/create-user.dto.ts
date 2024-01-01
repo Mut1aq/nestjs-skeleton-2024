@@ -4,7 +4,6 @@ import {
   MaxLength,
   MinLength,
   IsNotEmpty,
-  IsOptional,
   IsEnum,
   IsNumber,
   IsISO8601,
@@ -14,7 +13,6 @@ import { MatchTwoProperties } from 'core/decorators/match-two-properties.decorat
 import { i18nValidationMessage } from 'nestjs-i18n';
 import { I18nTranslations } from 'resources/generated/i18n.generated';
 import { Gender } from 'shared/enums/gender.enum';
-import { UniqueColumn } from '../decorator/unique-column.decorator';
 
 export class CreateUserDto {
   @ApiProperty({
@@ -27,12 +25,16 @@ export class CreateUserDto {
     required: true,
     type: String,
   })
+  @MaxLength(30, {
+    message: i18nValidationMessage<I18nTranslations>('validation.minLength', {
+      max: 30,
+    }),
+  })
   @MinLength(3, {
     message: i18nValidationMessage<I18nTranslations>('validation.minLength', {
       min: 3,
     }),
   })
-  @UniqueColumn('username')
   @IsString({
     message: i18nValidationMessage<I18nTranslations>('validation.isString'),
   })
@@ -144,20 +146,4 @@ export class CreateUserDto {
     message: i18nValidationMessage<I18nTranslations>('validation.isNotEmpty'),
   })
   birthday!: string;
-
-  @MaxLength(100, {
-    message: i18nValidationMessage<I18nTranslations>('validation.minLength', {
-      max: 100,
-    }),
-  })
-  @MinLength(3, {
-    message: i18nValidationMessage<I18nTranslations>('validation.minLength', {
-      min: 3,
-    }),
-  })
-  @IsNotEmpty({
-    message: i18nValidationMessage<I18nTranslations>('validation.isNotEmpty'),
-  })
-  @IsOptional()
-  city?: string;
 }

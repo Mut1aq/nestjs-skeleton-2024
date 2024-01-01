@@ -30,7 +30,7 @@ export class UsersController {
   }
 
   @Get(ROUTES.USERS.FIND_ONE)
-  findOne(@Param('userID', ParseUUIDPipe) userID: string) {
+  findOne(@Param('userID', new ParseUUIDPipe()) userID: string) {
     return this.usersService.findOne(userID);
   }
 
@@ -43,4 +43,5 @@ export class UsersController {
   remove(@UserID() userID: string) {
     return this.usersService.remove(userID);
   }
+ 
 }
