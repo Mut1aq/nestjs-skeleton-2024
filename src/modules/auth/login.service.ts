@@ -20,9 +20,9 @@ export class LoginService {
   async logUserIn(
     logUserInDto: LogUserInDto,
   ): Promise<ResponseFromServiceI<string>> {
-    const { email } = logUserInDto;
+    const { credentials } = logUserInDto;
 
-    const user = await this.usersService.findUserByEmail(email);
+    const user = await this.usersService.findUserByEmail(credentials);
 
     if (!user)
       throw new HttpException(

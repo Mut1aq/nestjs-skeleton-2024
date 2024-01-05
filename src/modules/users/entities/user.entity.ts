@@ -1,31 +1,33 @@
- import { Base } from 'shared/entities/base.entity';
-import { Gender } from 'shared/enums/gender.enum';
-import { Column, Entity,   } from 'typeorm';
-import { AccountStatus } from '../enums/account-status.enum';
-import { ProfileStatus } from '../enums/profile-status.enum';
-  
-@Entity()
-export class User extends Base {
-  @Column({ type: 'varchar', length: 30, unique: true })
-  username!: string;
+import { ModelDefinition, Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { SCHEMAS } from 'shared/constants/schemas.constant';
 
-  @Column({ type: 'varchar', length: 320, unique: true })
+@Schema({ timestamps: true })
+export class User {
+  @Prop({
+    type: String,
+    minlength: 5,
+    maxlength: 320,
+    required: true,
+    unique: true,
+  })
   email!: string;
 
-  @Column({ type: 'varchar' })
+  @Prop({
+    type: String,
+    minlength: 3,
+    maxlength: 30,
+    required: true,
+    unique: true,
+  })
+  username!: string;
+
+  @Prop({ type: String, required: true })
   password!: string;
-
-  @Column({ type: 'enum', enum: Gender })
-  gender!: Gender;
-
-  @Column({ type: 'varchar', length: 29 })
-  birthday!: string;
-
-  @Column({ type: 'enum', enum: AccountStatus, default: AccountStatus.ACTIVE })
-  accountStatus!: AccountStatus;
-
-  @Column({ type: 'enum', enum: ProfileStatus, default: ProfileStatus.PUBLIC })
-  profileStatus!: ProfileStatus;
-
-  
 }
+
+const UserSchema = SchemaFactory.createForClass(User);
+
+export const userMongooseModel: ModelDefinition = {
+  name: SCHEMAS.USERS,
+  schema: UserSchema,
+};

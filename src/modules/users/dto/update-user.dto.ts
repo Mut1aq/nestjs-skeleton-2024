@@ -5,15 +5,10 @@ import {
   IsString,
   IsNotEmpty,
   IsEmail,
-  IsEnum,
-  IsNumber,
-  IsISO8601,
   IsOptional,
 } from 'class-validator';
 import { i18nValidationMessage } from 'nestjs-i18n';
 import { I18nTranslations } from 'resources/generated/i18n.generated';
-import { Gender } from 'shared/enums/gender.enum';
-import { ProfileStatus } from '../enums/profile-status.enum';
 
 export class UpdateUserDto {
   @ApiProperty({
@@ -76,51 +71,4 @@ export class UpdateUserDto {
   })
   @IsOptional()
   email!: string;
-
-  @ApiProperty({
-    description: "User's gender",
-    example: 1,
-    isArray: false,
-    name: 'gender',
-    required: true,
-    type: Number,
-    enum: Gender,
-  })
-  @IsEnum(Gender)
-  @IsNumber(
-    { allowInfinity: false, allowNaN: false },
-    { message: 'Gender must be a number' },
-  )
-  @IsNotEmpty({
-    message: i18nValidationMessage<I18nTranslations>('validation.isNotEmpty'),
-  })
-  @IsOptional()
-  gender!: Gender;
-
-  @IsISO8601()
-  @IsNotEmpty({
-    message: i18nValidationMessage<I18nTranslations>('validation.isNotEmpty'),
-  })
-  @IsOptional()
-  birthday!: string;
-
-  @ApiProperty({
-    description: "User's profile status",
-    example: 'mut1aq.54321',
-    isArray: false,
-    name: 'profileStatus',
-    required: true,
-    type: Number,
-    enum: ProfileStatus,
-  })
-  @IsEnum(ProfileStatus)
-  @IsNumber(
-    { allowInfinity: false, allowNaN: false },
-    { message: 'ProfileStatus must be a number' },
-  )
-  @IsNotEmpty({
-    message: i18nValidationMessage<I18nTranslations>('validation.isNotEmpty'),
-  })
-  @IsOptional()
-  profileStatus!: ProfileStatus;
 }

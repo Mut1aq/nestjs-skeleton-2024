@@ -13,7 +13,7 @@ import { join } from 'path';
 import { RedisClientOptions } from 'redis';
 import * as Joi from 'joi';
 import { ConfigService } from '@nestjs/config/dist';
-import { TypeOrmModuleAsyncOptions } from '@nestjs/typeorm';
+import { MongooseModuleAsyncOptions } from '@nestjs/mongoose';
 
 export const jwtOptions: JwtModuleAsyncOptions = {
   useFactory: async (configService: ConfigService) => ({
@@ -69,27 +69,18 @@ export const configOptions: ConfigModuleOptions = {
     ALLOWED_HOSTS: Joi.string().min(1).required(),
     PREFIX: Joi.string().min(3).max(10).required(),
     APP_NAME: Joi.string().min(3).max(30).required(),
-    DB_HOST: Joi.string().min(9).required(),
-    DB_PORT: Joi.number().required(),
-    DB_USERNAME: Joi.string().min(3).max(100).required(),
-    DB_PASSWORD: Joi.string().min(3).max(100).required(),
-    DB_NAME: Joi.string().min(3).max(100).required(),
   }),
 };
 
-export const typeORMOptions: TypeOrmModuleAsyncOptions = {
+export const mongooseOptions: MongooseModuleAsyncOptions = {
   useFactory: async (configService: ConfigService) => ({
-    type: 'postgres',
-    host: configService.get<string>('DB_HOST')!,
-    port: +configService.get<number>('DB_PORT')!,
-    username: configService.get<string>('DB_USERNAME')!,
-    password: configService.get<string>('DB_PASSWORD')!,
-    database: configService.get<string>('DB_NAME')!,
-    entities: [],
-    synchronize: true,
+    uri: configService.get<string>('MONGODB_URI')!,
+    dbName: `nestJSSkeleton${
+      configService.get<string>('NODE_ENV')!.charAt(0).toUpperCase() +
+      configService.get<string>('NODE_ENV')!.slice(1)
+    }DB`,
     retryAttempts: 5,
     retryDelay: 10000,
-    autoLoadEntities: true,
   }),
   inject: [ConfigService],
 };

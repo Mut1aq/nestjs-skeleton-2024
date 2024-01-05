@@ -1,7 +1,7 @@
 import { HttpStatus, Injectable } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import { CreateUserDto } from 'modules/users/dto/create-user.dto';
-import { User } from 'modules/users/entities/user.entity';
+import { UserDocument } from 'modules/users/types/user-document.type';
 import { UsersService } from 'modules/users/users.service';
 import { ResponseFromServiceI } from 'shared/interfaces/general/response-from-service.interface';
 
@@ -10,7 +10,7 @@ export class RegisterService {
   constructor(private readonly usersService: UsersService) {}
   async registerUser(
     createUserDto: CreateUserDto,
-  ): Promise<ResponseFromServiceI<User>> {
+  ): Promise<ResponseFromServiceI<UserDocument>> {
     const { password } = createUserDto;
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);

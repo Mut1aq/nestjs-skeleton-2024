@@ -10,7 +10,7 @@ import {
   configOptions,
   i18nOptions,
   jwtOptions,
-  typeORMOptions,
+  mongooseOptions,
 } from 'shared/configs/app.option';
 import { CacheModule } from 'core/lib/cache/cache.module';
 import { I18nModule } from 'nestjs-i18n';
@@ -21,7 +21,7 @@ import { CronJobModule } from 'core/lib/cron-job/cron-job.module';
 import { ConfigModule } from '@nestjs/config';
 import helmet from 'helmet';
 import { RequestIdMiddleware } from 'core/middlewares/request-id.middleware';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
   imports: [
@@ -32,7 +32,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     I18nModule.forRoot(i18nOptions),
     JwtModule.registerAsync(jwtOptions),
     CacheModule.register('cache-manager-redis-yet'),
-    TypeOrmModule.forRootAsync(typeORMOptions),
+    MongooseModule.forRootAsync(mongooseOptions),
     ModulesModule,
   ],
   controllers: [],
